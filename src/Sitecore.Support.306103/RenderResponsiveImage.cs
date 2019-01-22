@@ -60,7 +60,7 @@
       }
     }
 
-    protected virtual HtmlGenericControl CreateResponsiveImage(Item mediaItem, VariantResponsiveImage variantResponsiveImage, string altText)
+    protected virtual HtmlImage CreateResponsiveImage(Item mediaItem, VariantResponsiveImage variantResponsiveImage, string altText)
     {
       string text = ServiceLocator.GetRequiredResetableService<BaseMediaManager>().Value.GetMediaUrl(mediaItem);
       string sourceSet = GetSourceSet(variantResponsiveImage.Widths, text);
@@ -68,7 +68,7 @@
       {
         text = AddWidthParam(text, variantResponsiveImage.DefaultSize);
       }
-      HtmlGenericControl htmlGenericControl = new HtmlGenericControl("img");
+      HtmlImage htmlGenericControl = new System.Web.UI.HtmlControls.HtmlImage();
       htmlGenericControl.Attributes.Add("src", text);
       if (!string.IsNullOrWhiteSpace(altText))
       {
